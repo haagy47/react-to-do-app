@@ -15,15 +15,16 @@ class App extends Component {
     };
   }
 
-    /*deleteTodo(e){
-      const newList = this.state.todos.filter(e.target.value);
-      this.setState({ todos: [newList]})
-    }*/
-
-    deleteTodo(index){
-      const newList = this.state.todos.filter([index]);
-      this.setState({todos: newList })
+    deleteTodo(index) {
+      function checkTodo(todo, itemClicked) {
+        if (itemClicked !== index) {
+          return todo;
+        }
+      }
+      const newTodosList = this.state.todos.filter(checkTodo);
+      this.setState({ todos: newTodosList })
     }
+
 
     handleChange(e) {
       this.setState({ newTodoDescription: e.target.value })
